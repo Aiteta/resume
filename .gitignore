@@ -1,0 +1,28 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Backup files
+*~
+*.bak
+*.sav
+*.backup
+
+# Editor files
+.vscode/
+*.swp
+.DS_Store
