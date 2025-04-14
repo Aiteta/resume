@@ -33,12 +33,12 @@ jobs:
 
       - name: Compile LaTeX
         run: |
-          pdflatex -interaction=nonstopmode main.tex
-          pdflatex -interaction=nonstopmode main.tex
+          pdflatex -interaction=nonstopmode ResumeAAE.tex
+          pdflatex -interaction=nonstopmode ResumeAAE.tex
 
       - name: Test if PDF was generated
         run: |
-          if [ ! -f main.pdf ]; then
+          if [ ! -f ResumeAAE.pdf ]; then
             echo "❌ PDF not generated. Failing build."
             exit 1
           else
@@ -65,8 +65,8 @@ jobs:
 
       - name: Compile LaTeX
         run: |
-          pdflatex -interaction=nonstopmode main.tex
-          pdflatex -interaction=nonstopmode main.tex
+          pdflatex -interaction=nonstopmode ResumeAAE.tex
+          pdflatex -interaction=nonstopmode ResumeAAE.tex
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
