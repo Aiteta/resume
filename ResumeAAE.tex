@@ -1,5 +1,5 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
+\documentclass{article}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
@@ -13,6 +13,9 @@
 
 \begin{document}
 
+%-----------------------------
+% Contact Info
+%-----------------------------
 \begin{flushleft}
     {\huge Alexandre Ait Ettajer} \\
 \end{flushleft}
@@ -30,67 +33,80 @@
     LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer}
 \end{multicols}
 
-\begin{minipage}[t]{0.65\textwidth}
-    % Summary
-    \section*{SUMMARY}
-    Software engineer with 3+ years of experience \\
+\section*{SUMMARY}
+Software engineer with 3+ years of experience in systems development across frontend and backend. Skilled in designing scalable architectures, leading end-to-end projects, and mentoring junior engineers. Focused on backend systems, distributed computing, and computational infrastructure. Passionate about solving challenging problems and continuously deepening core CS knowledge.
 
-    % Experience
-    \section*{EXPERIENCE}
-    {\Large Senior Associate Software Engineer} \\
-    \textbf{The MathWorks, Inc.} \\
-    05/2024 -- Present \textbar\ Natick, MA
-    \begin{itemize}[leftmargin=*]
-        \item List1
-        \item List2\\
-    \end{itemize}
+%-----------------------------
+% Skills
+%-----------------------------
+\section*{SKILLS}
+\begin{description}
+    \item \textbf{Languages:} C++, JavaScript, MATLAB, Rust, Python, TypeScript, Fortran
+    \item \textbf{Frameworks/Libraries:} Node.js, LAPACK, PyTorch, NumPy, Matplotlib
+    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce
+    \item \textbf{Collaboration:} Mentorship, Cross-functional Communication, Stakeholder Alignment, Technical Presentations
+\end{description}
 
-    {\Large Associate Software Engineer} \\
-    \textbf{The MathWorks, Inc.} \\
-    04/2023 -- 04/2024 \textbar\ Natick, MA
-    \begin{itemize}[leftmargin=*]
-        \item List3
-        \item List4\\
-    \end{itemize}
+%-----------------------------
+% Experience
+%-----------------------------
+\section*{EXPERIENCE}
+\textbf{The MathWorks, Inc.} \hfill Natick, MA (Hybrid)
 
-    {\Large Engineering Development Group Associate} \\
-    \textbf{The MathWorks, Inc.} \\
-    05/2022 -- 03/2023 \textbar\ Natick, MA
-    \begin{itemize}[leftmargin=*]
-        \item List5
-        \item List6
-    \end{itemize}
-    
-    % Education
-    \section*{EDUCATION}
-    {\Large Master of Science in Computer Science} \\
-    \textbf{The University of Texas at Austin} \\
-    GPA: 3.5 / 4.0 \textbar\ 08/2023 -- Present \textbar\ Austin, TX\\
+{\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
+\begin{itemize}[leftmargin=*]
+    \item Drove low-level performance improvements in MATLAB visualizations by redesigning client-server messaging, reducing latency and simplifying architecture
+    \item Replaced legacy C++ layout/rendering with JavaScript canvas, enabling smooth client-side interactions without backend roundtrips
+    \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
+    \item Created reusable data abstractions to generalize heterogeneous input handling across graphics objects
+    \item Mentored junior engineers and communicated technical direction to senior managers across cross-functional teams
+    \item Contributed to visual tools used by tens to hundreds of thousands of engineers and students worldwide
+\end{itemize}
 
-    {\Large Bachelor of Science in Computer Science} \\
-    \textbf{Rensselaer Polytechnic Institute} \\
-    GPA: 3.93 / 4.0 \textbar\ 08/2018 -- 05/2022 \textbar\ Troy, NY\\
+{\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
+\begin{itemize}[leftmargin=*]
+    \item Developed 3D data annotations using MATLAB UI and JavaScript rendering, creating infinite plane annotations
+    \item Designed and implemented MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
+    \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
+\end{itemize}
 
-    {\Large Bachelor of Science in Aeronautical Engineering} \\
-    \textbf{Rensselaer Polytechnic Institute} \\
-    GPA: 3.93 / 4.0 \textbar\ 08/2018 -- 05/2022 \textbar\ Troy, NY
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.32\textwidth}
-    % Skills
-    \section*{SKILLS}
+{\large \textbf{Associate Software Engineer}} \hfill \textit{Apr 2023 - Apr 2024}
+\begin{itemize}[leftmargin=*]
+    \item Prototyped small-scale features, gained deep understanding of C++/XML build systems
+\end{itemize}
 
-    \textbf{Languages:} C++, JavaScript, TypeScript, MATLAB,  \\\\
-    \textbf{Frameworks:} React, Node.js, Express, Flask \\\\
-    \textbf{Tools:} Docker, Git, Postgres, Redis, AWS, GitHub Actions\\
+{\large \textbf{EDG Associate}} \hfill \textit{May 2022 - Apr 2023}
+\begin{itemize}[leftmargin=*]
+    \item Solved customer issues with code generation and completed dev rotations
+\end{itemize}
 
-    % Projects
-    \section*{PROJECTS}
+\textbf{Sandia National Laboratory Intern} \hfill Albuquerque, NM (Remote)
 
-    \textbf{BudgetPal} \\
-    A personal budgeting web/mobile app with bank integration. Built with React Native, Node.js, PostgreSQL, and Docker.\\
+{\large \textbf{Science Undergraduate Laboratory Intern}} \hfill \textit{May 2021 - May 2022}
 
-    \textbf{Canticle for the Doomed} \\
-    Video game built during game jam
-\end{minipage}
+\begin{itemize}[leftmargin=*]
+    \item Automated visualization of parameter effects on HPC performance for MHD fluid simulations
+    \item Presented findings to senior researchers and contributed to internal proposal pipeline
+\end{itemize}
+
+%-----------------------------
+% PROJECTS
+%-----------------------------
+\section*{PROJECTS}
+\textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} \\
+Browser-based rogue-like with procedural generation, built during 7-day game jam \\
+\textit{TypeScript, Docker, GitHub Actions}\\
+Co-developed gameplay and built hot-reload deployment pipelines
+
+%-----------------------------
+% EDUCATION
+%-----------------------------
+\section*{EDUCATION}
+\textbf{M.S. in Computer Science} \hfill \textit{GPA: 3.56}\\
+The University of Texas at Austin \hfill Austin, TX (December 2025) \\
+Relevant Coursework: Advanced OS, Distributed Computing, Deep Learning, Quantum Computing, NLP, RL
+
+\textbf{B.S. in Computer Science} \textit{and} \textbf{B.S. in Aeronautical Engineering} \hfill \textit{GPA: 3.93, Summa Cum Laude} \\
+Rensselaer Polytechnic Institute \hfill Troy, NY (May 2022) \\
+Capstone Projects: Operating Systems (CS), Numerical Solutions for Wave Equations (AE)
 \end{document}
