@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
@@ -27,20 +27,13 @@
 \end{tabular*}
 
 %-----------------------------
-% Summary
-%-----------------------------
-\section*{SUMMARY}
-Software engineer with 4 years of experience in systems development across frontend and backend. Skilled in designing scalable architectures, leading end-to-end projects, deep understanding of software development life-cycle, and mentoring junior engineers. Focused on backend systems, distributed computing, and computational infrastructure. Passionate about solving challenging problems and continuously deepening core CS knowledge.
-
-%-----------------------------
 % Skills
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} C++, JavaScript, MATLAB, Rust, Python, TypeScript, CUDA, Go, Fortran
-    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK, PyTorch, NumPy, Matplotlib
-    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce
-    \item \textbf{Collaboration:} Mentorship, Cross-functional Communication, Stakeholder Alignment, Technical Presentations
+    \item \textbf{Languages:} C++, JavaScript, TypeScript, Rust, Go, Python, MATLAB
+    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK
+    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce, Jenkins
 \end{description}
 
 %-----------------------------
@@ -52,69 +45,52 @@ Software engineer with 4 years of experience in systems development across front
 {\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
 \begin{itemize}[leftmargin=*]
     \item Enhanced client-server messaging architecture for MATLAB visualizations, allowing internal downstream teams to easily create their own cloud-native visualizations and interactions
-    \item Migrated backend C++ rendering primitives rulers, grid, and labels to client-side JavaScript, allowing for 25\% faster interactions on local MATLAB sessions and 50\% faster interactions on MATLAB Online
-    \item Supported cross-team initiatives to allow for responsive interactions for embedded MATLAB visualizations in web browsers 
-    \item Steered working group sessions for modernizing and creating distributed visualization architectures across multiple MathWorks teams 
+    \item Migrated backend C++ rendering primitives to client-side JavaScript; 25\% faster local interactions, 50\% faster on MATLAB Online
+    \item Led cross-team initiatives for responsive embedded MATLAB visualizations in web browsers
+    \item Steered working group sessions for distributed visualization architectures across MathWorks teams 
     \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
-    \item Mentored junior engineers and communicated technical direction to senior managers across cross-functional teams
-    \item Contributed to visual tools like \texttt{plot}, \texttt{bar}, and \texttt{area} used by millions of engineers and students worldwide
+    \item Resolved mass build/test failures from component dependencies; led Axes/Tick source code restructuring
+    \item Managed cross-cluster Perforce pipelines; contributed to Jenkins production deployments
+    \item Mentored junior engineers; communicated technical direction to senior managers across teams
 \end{itemize}
 
 {\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
 \begin{itemize}[leftmargin=*]
-    \item Developed \texttt{constantplane} 3D data annotation using MATLAB and JavaScript rendering, allowing users to highlight cross-sections of volumetric data
+    \item Developed \texttt{constantplane} data annotation using MATLAB and JavaScript, allowing users to annotate volumetric data
     \item Designed and prototyped MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
     \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
 \end{itemize}
 
-{\large \textbf{Associate Software Engineer}} \hfill \textit{Apr 2023 - Apr 2024}
+{\large \textbf{Associate Software Engineer / EDG Associate}} \hfill \textit{May 2022 - Apr 2024}
 \begin{itemize}[leftmargin=*]
-    \item Prototyped small-scale features, gained deep understanding of C++/XML build systems
-\end{itemize}
-
-{\large \textbf{EDG Associate}} \hfill \textit{May 2022 - Apr 2023}
-\begin{itemize}[leftmargin=*]
-    \item Solved customer issues with code generation and completed dev rotations
-\end{itemize}
-
-\vspace{12pt}
-
-\textbf{Sandia National Laboratory Intern} \hfill Albuquerque, NM (Remote)
-
-{\large \textbf{Science Undergraduate Laboratory Intern}} \hfill \textit{May 2021 - May 2022}
-
-\begin{itemize}[leftmargin=*]
-    \item Automated visualization of parameter effects on HPC performance for MHD fluid simulations
-    \item Presented findings to senior researchers and contributed to internal proposal pipeline
+    \item Completed development rotations; gained deep understanding of C++/XML build systems and resolved customer issues
 \end{itemize}
 
 %-----------------------------
 % PROJECTS
 %-----------------------------
 \section*{PROJECTS}
-\textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} \\
-Browser-based rogue-like with procedural generation, built during 7-day game jam \\
-\textit{TypeScript, Docker, GitHub Actions}\\
-Co-developed gameplay and built hot-reload deployment pipelines
+\textbf{Distributed File System} — \textit{Go, Paxos} \\
+Implemented fault-tolerant distributed file system using Paxos consensus for data replication across multiple nodes
+
+\textbf{2D Magnetohydrodynamics Simulator} — \textit{C++, CUDA, MATLAB} \\
+Built GPU-accelerated 2D MHD simulator using finite element analysis for fluid simulations
+
+\textbf{3D N-Body Simulator} — \textit{C++, MPI} \\
+Developed parallelized gravitational simulator using Barnes-Hut algorithm for O(n log n) performance
+
+\textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} — \textit{TypeScript, Docker, GitHub Actions} \\
+Browser-based rogue-like with procedural generation; built hot-reload deployment pipelines (7-day game jam)
 
 %-----------------------------
 % EDUCATION
 %-----------------------------
 \section*{EDUCATION}
-\textbf{Capstone Projects:}
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Distributed File System} — Implemented a distributed file system in Go using Paxos consensus for fault tolerance and data replication across multiple nodes
-    \item \textbf{2D Magnetohydrodynamics Simulator} — Built a GPU accelerated 2D MHD simulator in C++, CUDA, and MATLAB using finite element analysis 
-    \item \textbf{3D N-Body Simulator} — Developed a parallelized 3D N-body gravitational simulator in C++ and MPI, using the Barnes-Hut algorithm to optimize performance
-\end{itemize}
+\textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
+\textit{GPA: 3.56, Cum Laude} — Distributed Systems, Parallel Systems, Advanced Operating Systems
 
-\textbf{M.S. in Computer Science} \hfill \textit{GPA: 3.56}, Cum Laude\\
-The University of Texas at Austin \hfill Austin, TX (December 2025) \\
-Relevant Coursework: Parallel Systems, Advanced Operating Systems, Distributed Systems, Deep Learning, NLP
-
-\textbf{B.S. in Computer Science} \textit{and} \textbf{B.S. in Aeronautical Engineering} \hfill \textit{GPA: 3.93, Summa Cum Laude} \\
-Rensselaer Polytechnic Institute \hfill Troy, NY (May 2022)
-Relevant Coursework: Data Structures, Algorithms, Computer Architecture, Operating Systems, Numerical Methods, Finite Element Analysis, Numerical Linear Algebra, Numerical Solutions to PDEs
+\textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\
+\textit{GPA: 3.93, Summa Cum Laude}
 
 
 \end{document}
