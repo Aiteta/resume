@@ -5,6 +5,8 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{multicol}
+\usepackage{lmodern} % For better font rendering (optional)
+
 
 % Section formatting
 \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
@@ -17,32 +19,26 @@
 % Contact Info
 %-----------------------------
 \begin{flushleft}
-    {\huge Alexandre Ait Ettajer} \\
+    {\Large Alexandre Ait Ettajer} \\
 \end{flushleft}
-\begin{multicols}{2}
-    \raggedright
-    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} \\
-    +1 (281) 435-9481 \\
-    Brookline, MA \\
-    
-    \columnbreak
-    
-    \raggedleft
-    \href{https://www.alexandreae.com}{alexandreae.com} \\
-    GitHub: \href{https://github.com/aiteta}{Aiteta} \\
-    LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer}
-\end{multicols}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
+    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{tabular*}
 
+%-----------------------------
+% Summary
+%-----------------------------
 \section*{SUMMARY}
-Software engineer with 3+ years of experience in systems development across frontend and backend. Skilled in designing scalable architectures, leading end-to-end projects, and mentoring junior engineers. Focused on backend systems, distributed computing, and computational infrastructure. Passionate about solving challenging problems and continuously deepening core CS knowledge.
+Software engineer with 4 years of experience in systems development across frontend and backend. Skilled in designing scalable architectures, leading end-to-end projects, deep understanding of software development life-cycle, and mentoring junior engineers. Focused on backend systems, distributed computing, and computational infrastructure. Passionate about solving challenging problems and continuously deepening core CS knowledge.
 
 %-----------------------------
 % Skills
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} C++, JavaScript, MATLAB, Rust, Python, TypeScript, Fortran
-    \item \textbf{Frameworks/Libraries:} Node.js, LAPACK, PyTorch, NumPy, Matplotlib
+    \item \textbf{Languages:} C++, JavaScript, MATLAB, Rust, Python, TypeScript, CUDA, Go, Fortran
+    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK, PyTorch, NumPy, Matplotlib
     \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce
     \item \textbf{Collaboration:} Mentorship, Cross-functional Communication, Stakeholder Alignment, Technical Presentations
 \end{description}
@@ -55,18 +51,19 @@ Software engineer with 3+ years of experience in systems development across fron
 
 {\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
 \begin{itemize}[leftmargin=*]
-    \item Drove low-level performance improvements in MATLAB visualizations by redesigning client-server messaging, reducing latency and simplifying architecture
-    \item Replaced legacy C++ layout/rendering with JavaScript canvas, enabling smooth client-side interactions without backend roundtrips
+    \item Enhanced client-server messaging architecture for MATLAB visualizations, allowing internal downstream teams to easily create their own cloud-native visualizations and interactions
+    \item Migrated backend C++ rendering primitives rulers, grid, and labels to client-side JavaScript, allowing for 25\% faster interactions on local MATLAB sessions and 50\% faster interactions on MATLAB Online
+    \item Supported cross-team initiatives to allow for responsive interactions for embedded MATLAB visualizations in web browsers 
+    \item Steered working group sessions for modernizing and creating distributed visualization architectures across multiple MathWorks teams 
     \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
-    \item Created reusable data abstractions to generalize heterogeneous input handling across graphics objects
     \item Mentored junior engineers and communicated technical direction to senior managers across cross-functional teams
-    \item Contributed to visual tools used by tens to hundreds of thousands of engineers and students worldwide
+    \item Contributed to visual tools like \texttt{plot}, \texttt{bar}, and \texttt{area} used by millions of engineers and students worldwide
 \end{itemize}
 
 {\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
 \begin{itemize}[leftmargin=*]
-    \item Developed 3D data annotations using MATLAB UI and JavaScript rendering, creating infinite plane annotations
-    \item Designed and implemented MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
+    \item Developed \texttt{constantplane} 3D data annotation using MATLAB and JavaScript rendering, allowing users to highlight cross-sections of volumetric data
+    \item Designed and prototyped MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
     \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
 \end{itemize}
 
@@ -79,6 +76,8 @@ Software engineer with 3+ years of experience in systems development across fron
 \begin{itemize}[leftmargin=*]
     \item Solved customer issues with code generation and completed dev rotations
 \end{itemize}
+
+\vspace{12pt}
 
 \textbf{Sandia National Laboratory Intern} \hfill Albuquerque, NM (Remote)
 
@@ -102,11 +101,20 @@ Co-developed gameplay and built hot-reload deployment pipelines
 % EDUCATION
 %-----------------------------
 \section*{EDUCATION}
-\textbf{M.S. in Computer Science} \hfill \textit{GPA: 3.56}\\
+\textbf{Capstone Projects:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Distributed File System} — Implemented a distributed file system in Go using Paxos consensus for fault tolerance and data replication across multiple nodes
+    \item \textbf{2D Magnetohydrodynamics Simulator} — Built a GPU accelerated 2D MHD simulator in C++, CUDA, and MATLAB using finite element analysis 
+    \item \textbf{3D N-Body Simulator} — Developed a parallelized 3D N-body gravitational simulator in C++ and MPI, using the Barnes-Hut algorithm to optimize performance
+\end{itemize}
+
+\textbf{M.S. in Computer Science} \hfill \textit{GPA: 3.56}, Cum Laude\\
 The University of Texas at Austin \hfill Austin, TX (December 2025) \\
-Relevant Coursework: Advanced OS, Distributed Computing, Deep Learning, Quantum Computing, NLP, RL
+Relevant Coursework: Parallel Systems, Advanced Operating Systems, Distributed Systems, Deep Learning, NLP
 
 \textbf{B.S. in Computer Science} \textit{and} \textbf{B.S. in Aeronautical Engineering} \hfill \textit{GPA: 3.93, Summa Cum Laude} \\
-Rensselaer Polytechnic Institute \hfill Troy, NY (May 2022) \\
-Capstone Projects: Operating Systems (CS), Numerical Solutions for Wave Equations (AE)
+Rensselaer Polytechnic Institute \hfill Troy, NY (May 2022)
+Relevant Coursework: Data Structures, Algorithms, Computer Architecture, Operating Systems, Numerical Methods, Finite Element Analysis, Numerical Linear Algebra, Numerical Solutions to PDEs
+
+
 \end{document}
