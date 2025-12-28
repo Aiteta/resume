@@ -1,5 +1,5 @@
 TEX = ResumeAAE
-BUILD_DIR = build
+BUILD_DIR = bin
 PDF_DIR = pdf
 
 all: $(PDF_DIR)/$(TEX).pdf
