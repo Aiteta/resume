@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{lmodern} % For better font rendering (optional)
+
+
+% Section formatting
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+
+\pagestyle{empty}
+
+\begin{document}
+
+%-----------------------------
+% Contact Info
+%-----------------------------
+\begin{flushleft}
+    {\Large Alexandre Ait Ettajer} \\
+\end{flushleft}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
+    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{tabular*}
+
+%-----------------------------
+% Skills
+%-----------------------------
+\section*{SKILLS}
+\begin{description}
+    \item \textbf{Languages:} Go, Rust, C++, Python, TypeScript, JavaScript, MATLAB
+    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK
+    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce, Jenkins
+\end{description}
+
+%-----------------------------
+% Experience
+%-----------------------------
+\section*{EXPERIENCE}
+\textbf{The MathWorks, Inc.} \hfill Natick, MA (Hybrid)
+
+{\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
+\begin{itemize}[leftmargin=*]
+    \item Steered working group sessions for \textbf{distributed visualization architectures} across MathWorks teams, setting technical direction for systems serving internal downstream teams
+    \item Enhanced \textbf{client-server messaging architecture} for MATLAB visualizations, allowing internal downstream teams to easily create their own cloud-native visualizations and interactions
+    \item Migrated backend C++ rendering primitives to client-side JavaScript; 25\% faster local interactions, 50\% faster on MATLAB Online
+    \item Led cross-team initiatives for responsive embedded MATLAB visualizations in web browsers
+    \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
+    \item Resolved mass build/test failures from component dependencies; led Axes/Tick source code restructuring
+    \item Managed cross-cluster Perforce pipelines; contributed to Jenkins production deployments
+    \item Mentored junior engineers; communicated technical direction to senior managers across teams
+\end{itemize}
+
+{\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
+\begin{itemize}[leftmargin=*]
+    \item Developed \texttt{constantplane} data annotation using MATLAB and JavaScript, allowing users to annotate volumetric data
+    \item Designed and prototyped MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
+    \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
+\end{itemize}
+
+{\large \textbf{Associate Software Engineer / EDG Associate}} \hfill \textit{May 2022 - Apr 2024}
+\begin{itemize}[leftmargin=*]
+    \item Completed development rotations; gained deep understanding of C++/XML build systems and resolved customer issues
+\end{itemize}
+
+%-----------------------------
+% Projects
+%-----------------------------
+\section*{PROJECTS}
+\textbf{Distributed File System} — \textit{Go, Paxos} \\
+Implemented fault-tolerant distributed file system using \textbf{Paxos consensus} for data replication across multiple nodes
+
+\textbf{2D Magnetohydrodynamics Simulator} — \textit{C++, CUDA, MATLAB} \\
+Built GPU-accelerated 2D MHD simulator using finite element analysis for fluid simulations
+
+\textbf{3D N-Body Simulator} — \textit{C++, MPI} \\
+Developed parallelized gravitational simulator using Barnes-Hut algorithm for O(n log n) performance
+
+\textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} — \textit{TypeScript, Docker, GitHub Actions} \\
+Browser-based rogue-like with procedural generation; built hot-reload deployment pipelines (7-day game jam)
+
+%-----------------------------
+% Education
+%-----------------------------
+\section*{EDUCATION}
+\textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
+\textit{GPA: 3.56, Cum Laude} — Distributed Systems, Parallel Systems, Advanced Operating Systems
+
+\textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\
+\textit{GPA: 3.93, Summa Cum Laude}
+
+
+\end{document}
