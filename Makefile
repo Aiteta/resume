@@ -1,5 +1,6 @@
-# Builds the main resume and every tailored variant in variants/.
-# PDFs land in pdf/ (gitignored); CI publishes them to GitHub Pages.
+# Builds the main resume, every tailored variant in variants/,
+# and every cover letter in cover-letters/.
+# PDFs land in pdf/ (gitignored).
 
 MAIN = ResumeAAE
 BUILD_DIR = bin
@@ -8,7 +9,10 @@ PDF_DIR = pdf
 VARIANT_SRCS = $(wildcard variants/*.tex)
 VARIANT_PDFS = $(patsubst variants/%.tex,$(PDF_DIR)/%.pdf,$(VARIANT_SRCS))
 
-all: $(PDF_DIR)/$(MAIN).pdf $(VARIANT_PDFS)
+COVER_SRCS = $(wildcard cover-letters/*.tex)
+COVER_PDFS = $(patsubst cover-letters/%.tex,$(PDF_DIR)/%.pdf,$(COVER_SRCS))
+
+all: $(PDF_DIR)/$(MAIN).pdf $(VARIANT_PDFS) $(COVER_PDFS)
 
 $(BUILD_DIR) $(PDF_DIR):
 	mkdir -p $@
@@ -17,7 +21,11 @@ $(PDF_DIR)/$(MAIN).pdf: $(MAIN).tex | $(BUILD_DIR) $(PDF_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $(MAIN).tex
 	mv $(BUILD_DIR)/$(MAIN).pdf $(PDF_DIR)/
 
-$(PDF_DIR)/%.pdf: variants/%.tex | $(BUILD_DIR) $(PDF_DIR)
+$(VARIANT_PDFS): $(PDF_DIR)/%.pdf: variants/%.tex | $(BUILD_DIR) $(PDF_DIR)
+	latexmk -pdf -output-directory=$(BUILD_DIR) $<
+	mv $(BUILD_DIR)/$*.pdf $(PDF_DIR)/
+
+$(COVER_PDFS): $(PDF_DIR)/%.pdf: cover-letters/%.tex | $(BUILD_DIR) $(PDF_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $<
 	mv $(BUILD_DIR)/$*.pdf $(PDF_DIR)/
 
