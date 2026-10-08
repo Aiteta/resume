@@ -1,33 +1,37 @@
 # Builds the main resume, every tailored variant in variants/,
 # and every cover letter in cover-letters/.
-# PDFs land in pdf/ (gitignored).
+# PDFs land in pdf/ (gitignored): variants under pdf/variants/,
+# cover letters under pdf/cover-letters/.
 
 MAIN = ResumeAAE
 BUILD_DIR = bin
 PDF_DIR = pdf
 
 VARIANT_SRCS = $(wildcard variants/*.tex)
-VARIANT_PDFS = $(patsubst variants/%.tex,$(PDF_DIR)/%.pdf,$(VARIANT_SRCS))
+VARIANT_PDFS = $(patsubst variants/%.tex,$(PDF_DIR)/variants/%.pdf,$(VARIANT_SRCS))
 
 COVER_SRCS = $(wildcard cover-letters/*.tex)
-COVER_PDFS = $(patsubst cover-letters/%.tex,$(PDF_DIR)/%.pdf,$(COVER_SRCS))
+COVER_PDFS = $(patsubst cover-letters/%.tex,$(PDF_DIR)/cover-letters/%.pdf,$(COVER_SRCS))
 
 all: $(PDF_DIR)/$(MAIN).pdf $(VARIANT_PDFS) $(COVER_PDFS)
 
-$(BUILD_DIR) $(PDF_DIR):
-	mkdir -p $@
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+$(PDF_DIR):
+	mkdir -p $(PDF_DIR) $(PDF_DIR)/variants $(PDF_DIR)/cover-letters
 
 $(PDF_DIR)/$(MAIN).pdf: $(MAIN).tex | $(BUILD_DIR) $(PDF_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $(MAIN).tex
 	mv $(BUILD_DIR)/$(MAIN).pdf $(PDF_DIR)/
 
-$(VARIANT_PDFS): $(PDF_DIR)/%.pdf: variants/%.tex | $(BUILD_DIR) $(PDF_DIR)
+$(VARIANT_PDFS): $(PDF_DIR)/variants/%.pdf: variants/%.tex | $(BUILD_DIR) $(PDF_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $<
-	mv $(BUILD_DIR)/$*.pdf $(PDF_DIR)/
+	mv $(BUILD_DIR)/$*.pdf $(@D)/
 
-$(COVER_PDFS): $(PDF_DIR)/%.pdf: cover-letters/%.tex | $(BUILD_DIR) $(PDF_DIR)
+$(COVER_PDFS): $(PDF_DIR)/cover-letters/%.pdf: cover-letters/%.tex | $(BUILD_DIR) $(PDF_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $<
-	mv $(BUILD_DIR)/$*.pdf $(PDF_DIR)/
+	mv $(BUILD_DIR)/$*.pdf $(@D)/
 
 clean:
 	latexmk -C -output-directory=$(BUILD_DIR)
