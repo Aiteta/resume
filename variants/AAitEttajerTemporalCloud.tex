@@ -31,9 +31,8 @@
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} Go, Rust, C++, Python, TypeScript, JavaScript, MATLAB
-    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK
-    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce, Jenkins
+    \item \textbf{Languages:} Go, C++, Rust, Python, TypeScript, JavaScript, MATLAB
+    \item \textbf{Frameworks/Tools:} gRPC, HTTP, AWS, GCP, MySQL, Docker, Node.js, MPI, Jenkins, GitHub Actions, Git, Perforce
 \end{description}
 
 %-----------------------------
@@ -42,52 +41,45 @@
 \section*{EXPERIENCE}
 \textbf{The MathWorks, Inc.} \hfill Natick, MA (Hybrid)
 
-{\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
+{\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
 \begin{itemize}[leftmargin=*]
-    \item Enhanced \textbf{client-server messaging architecture} for MATLAB visualizations, allowing internal downstream teams to easily create their own cloud-native visualizations and interactions
-    \item Steered working group sessions for \textbf{distributed systems} architectures across MathWorks teams, setting technical direction for systems serving internal downstream teams
-    \item Migrated backend C++ rendering primitives to client-side JavaScript; 25\% faster local interactions, 50\% faster on MATLAB Online
-    \item Resolved mass build/test failures from component dependencies; led Axes/Tick source code restructuring
-    \item Managed cross-cluster Perforce pipelines; contributed to Jenkins production deployments
-    \item Led cross-team initiatives for responsive embedded MATLAB visualizations in web browsers
-    \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
-    \item Mentored junior engineers; communicated technical direction to senior managers across teams
+    \item Co-designed the JSON message format and C++ conversion rules for MATLAB's graphics client-server protocol (ordered, idempotent async updates to clients; property-change POST requests back), added payload compression to cut transfer time, and unit-tested serialization with mocked payloads. Used by the Rendering, Charting, and Interactions teams
+    \item Built and deployed a headless rendering HTTP microservice that turns a graphics JSON file into an HTML canvas
+    \item Drove the cross-team decision to let processes other than MATLAB update graphics clients and supply data (one server\slash many clients toward many-to-many), enabling headless rendering and renderer instances isolated from MATLAB
+    \item Moved axes rendering primitives from server-side C++ to client JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally and 50\% faster on MATLAB Online, with the server still the source of truth (verified by golden tests and QE)
+    \item Traced async client interactions that silently never reached the server, typically NaNs failing without errors
+    \item Twice fast-tracked fixes for monorepo integration breaks that blocked every engineer company-wide; added unit and system tests so developer sandboxes catch that class of dependency failure before integration
+    \item Shipped a multithreaded C++ pipeline for $M \times 3$ point data (four fused stages, SIMD across points, atomic-counter block dispatch to worker threads) that runs off MATLAB's compute thread; stress-tested for races
+    \item Mentored 3 engineers who shipped table support and animation features (one later joined my team); wrote feature specs and developer documentation
 \end{itemize}
 
-{\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
+{\large \textbf{Senior Associate Software Engineer}} \textit{(promoted)} \hfill \textit{April 2024 -- April 2025}
 \begin{itemize}[leftmargin=*]
-    \item Developed \texttt{constantplane} data annotation using MATLAB and JavaScript, allowing users to annotate volumetric data
-    \item Designed and prototyped MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
-    \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
+    \item Fixed FIG-file compatibility bugs across 2014--2025 releases caused by order-dependent property restores (e.g., Units vs.\ Position), so older releases load newer files intact and newer ones handle added or removed properties
 \end{itemize}
 
-{\large \textbf{Associate Software Engineer / EDG Associate}} \hfill \textit{May 2022 - Apr 2024}
+{\large \textbf{Associate Software Engineer}} \textit{(Engineering Development Group)} \hfill \textit{May 2022 -- April 2024}
 \begin{itemize}[leftmargin=*]
-    \item Completed development rotations; gained deep understanding of C++/XML build systems and resolved customer issues
+    \item Root-caused failures in large customer models, typically automotive, traced to unsanitized custom code in generated code
 \end{itemize}
 
 %-----------------------------
 % Projects
 %-----------------------------
 \section*{PROJECTS}
-\textbf{Distributed File System} — \textit{Go, Paxos} \\
-Implemented \textbf{fault-tolerant} distributed file system in \textbf{Go} using \textbf{Paxos consensus} for data replication across multiple nodes; designed around reliability fundamentals for node failure
+\textbf{Distributed File System} — \textit{Go, Paxos (single-decree to Multi-Paxos)} \hfill \textit{UT Austin course project, solo} \\
+Implemented leader election, membership changes (join, leave, temporary failure), and linearizable reads and writes through consensus; nodes pause elections when partitioned. Fixed dueling leaders on co-located nodes with randomized backoff
 
-\textbf{2D Magnetohydrodynamics Simulator} — \textit{C++, CUDA, MATLAB} \\
-Built GPU-accelerated 2D MHD simulator using finite element analysis for fluid simulations
-
-\textbf{3D N-Body Simulator} — \textit{C++, MPI} \\
-Developed parallelized gravitational simulator using Barnes-Hut algorithm for O(n log n) performance
-
-\textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} — \textit{TypeScript, Docker, GitHub Actions} \\
-Browser-based rogue-like with procedural generation; built hot-reload deployment pipelines (7-day game jam)
+\textbf{3D N-Body Simulator} — \textit{C++, MPI, gRPC} \\
+Barnes-Hut simulator on AWS/GCP with gRPC feeding a real-time visualization; $O(n \log n)$ scaling to millions of bodies
 
 %-----------------------------
 % Education
 %-----------------------------
 \section*{EDUCATION}
 \textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
-\textit{GPA: 3.56, Cum Laude} — Distributed Systems, Parallel Systems, Advanced Operating Systems
+\textit{Full-time course load while working full-time} — Distributed Systems, Parallel Systems, Advanced Operating Systems \\
+Course projects: MapReduce; OS scheduler, threads, virtualization, and file system
 
 \textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\
 \textit{GPA: 3.93, Summa Cum Laude}

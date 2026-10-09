@@ -1,3 +1,11 @@
+% =====================================================================
+% MASTER RESUME: everything in one place. Copy it for each application
+% and delete what doesn't fit the job; keep this file complete.
+% Each bullet ends with a comment naming what it shows, to make trimming
+% quick: backend, distributed, concurrency, perf, testing, compat,
+% debugging, graphics, web, leadership, docs, build, hpc, cloud.
+% TODO comments mark numbers or details that would make a line stronger.
+% =====================================================================
 \documentclass{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage{enumitem}
@@ -31,9 +39,9 @@
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} C++, JavaScript, TypeScript, Rust, Go, Python, MATLAB
-    \item \textbf{Frameworks/Libraries:} MPI, Node.js, LAPACK
-    \item \textbf{Tools/Platforms:} Docker, GitHub Actions, Git, Perforce, Jenkins
+    \item \textbf{Languages:} C++, Go, Rust, Python, TypeScript, JavaScript, MATLAB
+    \item \textbf{Frameworks/Protocols:} gRPC, HTTP, MPI, CUDA, Node.js, LAPACK
+    \item \textbf{Tools/Platforms:} AWS, GCP, Docker, MySQL, Jenkins, GitHub Actions, Git, Perforce
 \end{description}
 
 %-----------------------------
@@ -42,52 +50,65 @@
 \section*{EXPERIENCE}
 \textbf{The MathWorks, Inc.} \hfill Natick, MA (Hybrid)
 
-{\large \textbf{Software Engineer}} \hfill \textit{April 2025 - Present}
+{\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
 \begin{itemize}[leftmargin=*]
-    \item Enhanced client-server messaging architecture for MATLAB visualizations, allowing internal downstream teams to easily create their own cloud-native visualizations and interactions
-    \item Migrated backend C++ rendering primitives to client-side JavaScript; 25\% faster local interactions, 50\% faster on MATLAB Online
-    \item Led cross-team initiatives for responsive embedded MATLAB visualizations in web browsers
-    \item Steered working group sessions for distributed visualization architectures across MathWorks teams 
-    \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets
-    \item Resolved mass build/test failures from component dependencies; led Axes/Tick source code restructuring
-    \item Managed cross-cluster Perforce pipelines; contributed to Jenkins production deployments
-    \item Mentored junior engineers; communicated technical direction to senior managers across teams
+    \item Co-designed the JSON message format and C++ conversion rules that serialize MATLAB's graphics object tree (MCOS objects) for the graphics client-server protocol: ordered, idempotent async updates to JavaScript clients over IPC, and property-change POST requests back to the server. Added compression for large array payloads to cut transfer time, and unit-tested serialization with mocked payloads. Used by the Rendering, Charting, and Interactions teams % backend, distributed, testing
+    % TODO: how much did compression cut payload size or transfer time?
+    \item Led a cross-team working group on distributed visualization architecture and drove the decision to let processes other than MATLAB update graphics clients and supply data (one server\slash many clients toward many-to-many). This enabled headless rendering, cut back-and-forth between the renderer and MATLAB, and let users interact with renderer instances without affecting their MATLAB process % distributed, leadership
+    \item Built the headless rendering HTTP microservice: it runs the JavaScript renderer with no MATLAB process, takes a graphics JSON file, and returns a rendered HTML canvas; deployed to production through Jenkins % backend, cloud, web
+    % TODO: who calls it, and does it have auth, logging, or metrics?
+    \item Moved axes rendering primitives (rulers, grid, backdrop, labels, title, data-space transforms, ConstantLine/ConstantPlane) from server-side C++ to client-side JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally and 50\% faster on MATLAB Online. The server remains the source of truth; verified with golden tests and QE % perf, distributed, testing, graphics
+    \item Shipped a multithreaded C++ pipeline for $M \times 3$ point data: four fused stages, SIMD vectorization across points, and worker threads claiming blocks through an atomic counter, dispatched off the MATLAB compute thread so it doesn't block computation; stress-tested for race conditions % concurrency, perf
+    % TODO: speedup, and on what input sizes?
+    \item Led the Axes/Tick source restructuring and rewrote axis tick selection in C++23 (used by every MATLAB Axes): 500 $\to$ 190\,ns for linear and 640 $\to$ 310\,ns for log ticks, balancing optimized math with readable code. Structured as validate $\to$ route $\to$ pick with errors reported through \texttt{std::expected}; tested degenerate inputs and determinism across compilers and CPUs, and diffed behavior against the old algorithm on a large corpus % perf, testing, graphics
+    % TODO: once it ships, add the release
+    \item Twice fast-tracked fixes for company-wide breaks at monorepo integration, caused by component dependencies, that blocked every engineer on the monorepo; added unit and system tests so developer sandboxes catch that class of failure before integration % debugging, testing, build
+    \item Traced interactions in the promise-based async client that silently never reached the server, typically NaNs failing without errors % debugging, web
+    \item Designed tabular data support for core graphics (Bar, Area, Histogram), integrating SQL/Excel-style datasets % graphics
+    \item Led cross-team initiatives for responsive embedded MATLAB visualizations in web browsers (shipped) % web, graphics, leadership
+    % TODO: what shipped, for which teams or users, and what changed
+    \item Managed cross-cluster Perforce pipelines % build
+    % TODO: if "cluster" means a MathWorks source grouping, say so; infra readers will assume compute clusters
+    \item Mentored 3 engineers who shipped table support and animation features (one later joined my team); wrote feature specs and developer documentation; communicated technical direction to senior managers across teams % leadership, docs
 \end{itemize}
 
-{\large \textbf{Senior Associate Software Engineer}} \hfill \textit{April 2024 - April 2025}
+{\large \textbf{Senior Associate Software Engineer}} \textit{(promoted)} \hfill \textit{April 2024 -- April 2025}
 \begin{itemize}[leftmargin=*]
-    \item Developed \texttt{constantplane} data annotation using MATLAB and JavaScript, allowing users to annotate volumetric data
-    \item Designed and prototyped MATLAB's first hierarchical data viz (Sunburst Chart); led UX and design reviews
-    \item Diagnosed and resolved backend theming and serialization bugs, ensuring compatibility across releases
+    \item Developed \texttt{constantplane} in MATLAB and JavaScript (shipped), letting users annotate volumetric data % graphics
+    \item Designed and prototyped MATLAB's first hierarchical chart (Sunburst), which shipped; led UX and design reviews % graphics, leadership
+    \item Diagnosed and fixed FIG-file save/load (\texttt{saveobj}/\texttt{loadobj}) compatibility bugs across files from 2014--2025 releases, where property restore order changes results (e.g., Units vs.\ Position); designed save/load so older releases load newer files intact and newer releases handle added or removed properties. Also fixed backend theming bugs % compat, backend, debugging
 \end{itemize}
 
-{\large \textbf{Associate Software Engineer / EDG Associate}} \hfill \textit{May 2022 - Apr 2024}
+{\large \textbf{Associate Software Engineer}} \textit{(Engineering Development Group)} \hfill \textit{May 2022 -- April 2024}
 \begin{itemize}[leftmargin=*]
-    \item Completed development rotations; gained deep understanding of C++/XML build systems and resolved customer issues
+    \item Rotations in development (C++/XML build systems) and technical support, as the code generation and graphics specialist % build, debugging
+    \item Root-caused failures in large customer models, typically from automotive companies, traced to custom code injected unsanitized into generated code; resolved them by helping customers adapt their code or by filing feature requests % debugging
 \end{itemize}
 
 %-----------------------------
-% PROJECTS
+% Projects
 %-----------------------------
 \section*{PROJECTS}
-\textbf{Distributed File System} — \textit{Go, Paxos} \\
-Implemented fault-tolerant distributed file system using Paxos consensus for data replication across multiple nodes
+\textbf{Distributed File System} — \textit{Go, Paxos (single-decree to Multi-Paxos)} \hfill \textit{UT Austin course project, solo} \\
+Built in phases from single-decree Paxos to Multi-Paxos: leader election, membership changes (join, leave, temporary failure), and linearizable reads and writes through consensus; nodes detect partitions and pause elections. Fixed simultaneous leader claims among co-located nodes with randomized election backoff % distributed
+
+\textbf{3D N-Body Simulator} — \textit{C++, MPI, gRPC} \\
+Parallel Barnes-Hut gravitational simulator run on AWS and GCP, with gRPC feeding a real-time visualization; measured $O(n \log n)$ runtime growth to millions of bodies after partitioning work per body instead of per fragment % hpc, cloud, concurrency
 
 \textbf{2D Magnetohydrodynamics Simulator} — \textit{C++, CUDA, MATLAB} \\
-Built GPU-accelerated 2D MHD simulator using finite element analysis for fluid simulations
-
-\textbf{3D N-Body Simulator} — \textit{C++, MPI} \\
-Developed parallelized gravitational simulator using Barnes-Hut algorithm for O(n log n) performance
+GPU-accelerated 2D MHD simulator using finite element analysis for fluid simulations % hpc
 
 \textbf{Canticle for the Doomed} — \href{https://sve009.itch.io/canticle-for-the-doomed}{itch.io} — \textit{TypeScript, Docker, GitHub Actions} \\
-Browser-based rogue-like with procedural generation; built hot-reload deployment pipelines (7-day game jam)
+Browser-based roguelike with procedural generation, built in a 7-day game jam; set up a hot-reload deployment pipeline % web
 
 %-----------------------------
-% EDUCATION
+% Education
 %-----------------------------
 \section*{EDUCATION}
 \textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
-\textit{GPA: 3.56, Cum Laude} — Distributed Systems, Parallel Systems, Advanced Operating Systems
+\textit{Full-time course load while working full-time} — Distributed Systems, Parallel Systems, Advanced Operating Systems \\
+Course projects: Multi-Paxos file system, MapReduce, and OS components: scheduler, threads, file system, and virtualization (partitioning RAM, address spaces, and the file system)
+% GPA 3.56 if an application asks for it. Cum Laude isn't on the diploma, so leave it off.
 
 \textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\
 \textit{GPA: 3.93, Summa Cum Laude}
