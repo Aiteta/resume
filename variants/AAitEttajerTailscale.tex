@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{lmodern} % For better font rendering (optional)
+
+
+% Section formatting
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+
+\pagestyle{empty}
+
+\begin{document}
+
+%-----------------------------
+% Contact Info
+%-----------------------------
+\begin{flushleft}
+    {\Large Alexandre Ait Ettajer} \\
+\end{flushleft}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
+    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{tabular*}
+
+%-----------------------------
+% Skills
+%-----------------------------
+\section*{SKILLS}
+\begin{description}
+    \item \textbf{Languages:} Go, C++, Python, Java, Rust, TypeScript, JavaScript, MATLAB
+    \item \textbf{Systems/Tools:} gRPC, HTTP/JSON, AWS, GCP, MySQL, Docker, Jenkins, GitHub Actions, Git, Perforce, MPI
+\end{description}
+
+%-----------------------------
+% Experience
+%-----------------------------
+\section*{EXPERIENCE}
+\textbf{The MathWorks, Inc.} \hfill Natick, MA (Hybrid)
+
+{\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
+\begin{itemize}[leftmargin=*]
+    \item Led a cross-team working group on distributed visualization architecture; drove the decision to let non-MATLAB processes update graphics clients and supply data (one server\slash many clients to many-to-many), enabling headless rendering
+    \item Co-designed the JSON wire format and C++ serialization rules for MATLAB's graphics object tree: ordered, idempotent async updates to JavaScript clients and property-change POST requests back to the server, with compression for repeated data in vector payloads. Used by the Rendering, Charting, and Interactions teams
+    \item Moved axes rendering from server-side C++ to client JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally, 50\% faster online
+    \item Built the stateless REST service that delivers the headless JavaScript renderer to web pages, one request per web instance, with logging and health checks; Jenkins deploys a new bundle each release, and my team fixes deployment breaks
+    \item Shipped a multithreaded C++ pipeline for $M \times 3$ point data (four fused stages, SIMD across points, worker threads claiming blocks through an atomic counter) that runs off MATLAB's compute thread; stress-tested for race conditions
+    \item Twice fast-tracked fixes for monorepo integration breaks that blocked every engineer company-wide; added unit and system tests so developer sandboxes catch that class of dependency failure before integration
+    \item Rewrote axis tick selection in C++23, used by every MATLAB Axes: 500 $\to$ 190\,ns linear and 640 $\to$ 310\,ns log; verified degenerate inputs, determinism across compilers and CPUs, and old-vs-new behavior on a large corpus
+    \item Mentored 3 engineers who shipped table support and animation features; one was later hired onto my team
+\end{itemize}
+
+{\large \textbf{Senior Associate Software Engineer}} \textit{(promoted)} \hfill \textit{April 2024 -- April 2025}
+\begin{itemize}[leftmargin=*]
+    \item Fixed FIG-file save/load compatibility across 2014--2025 releases (order-dependent property restores); designed save/load so older releases load newer files intact and newer ones handle added or removed properties
+\end{itemize}
+
+{\large \textbf{Associate Software Engineer}} \textit{(Engineering Development Group)} \hfill \textit{May 2022 -- April 2024}
+\begin{itemize}[leftmargin=*]
+    \item Rotations in development (C++/XML build systems) and technical support (code generation and graphics specialist)
+\end{itemize}
+
+%-----------------------------
+% Projects
+%-----------------------------
+\section*{PROJECTS}
+\textbf{Distributed File System} — \textit{Go, Paxos (single-decree to Multi-Paxos)} \hfill \textit{UT Austin course project, solo} \\
+Built in phases from single-decree Paxos to Multi-Paxos: leader election, membership changes (join, leave, temporary failure), and linearizable reads and writes through consensus; nodes detect partitions and pause elections. Fixed dueling leaders on co-located nodes with randomized election backoff
+
+\textbf{3D N-Body Simulator} — \textit{C++, MPI, gRPC} \\
+Parallel Barnes-Hut simulator on AWS and GCP, gRPC feeding a live visualization; $O(n \log n)$ growth to millions of bodies
+
+%-----------------------------
+% Education
+%-----------------------------
+\section*{EDUCATION}
+\textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
+\textit{Full-time course load while working full-time} — Distributed Systems, Parallel Systems, Advanced Operating Systems \\
+Course projects: MapReduce (Parallel Systems); file system with crash recovery (Advanced OS)
+
+\textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\
+\textit{GPA: 3.93, Summa Cum Laude}
+
+
+\end{document}
