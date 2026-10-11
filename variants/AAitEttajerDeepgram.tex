@@ -22,7 +22,7 @@
     {\Large Alexandre Ait Ettajer} \\
 \end{flushleft}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
-    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} & +1(281) 435-9481 & Boston, MA \\
     GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
 \end{tabular*}
 
@@ -47,7 +47,7 @@
     \item Moved axes rendering from server-side C++ to client JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally, 50\% faster online
     \item Rewrote axis tick selection in C++23, used by every MATLAB Axes: 500 $\to$ 190\,ns linear and 640 $\to$ 310\,ns log; verified degenerate inputs, determinism across compilers and CPUs, and old-vs-new behavior on a large corpus
     \item Co-designed the JSON wire format and C++ serialization rules for MATLAB's graphics object tree: ordered, idempotent async updates to JavaScript clients and property-change POST requests back to the server, with compression for repeated data in vector payloads. Used by the Rendering, Charting, and Interactions teams
-    \item Built the stateless REST service that delivers the headless JavaScript renderer to web pages, one request per web instance, with logging and health checks; Jenkins deploys a new bundle each release, and my team fixes deployment breaks
+    \item Built the stateless Go REST service that delivers the headless JavaScript renderer to web pages, one request per web instance, with logging and health checks; Jenkins deploys a new bundle each release, and my team fixes deployment breaks
     \item Traced interactions in the promise-based async client that silently never reached the server, typically NaNs failing without errors
     \item Led a cross-team working group on distributed visualization architecture; drove the decision to let non-MATLAB processes update graphics clients and supply data (one server\slash many clients to many-to-many), enabling headless rendering
     \item Mentored 3 engineers who shipped table support and animation features; one was later hired onto my team

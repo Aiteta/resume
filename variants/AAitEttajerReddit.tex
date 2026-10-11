@@ -22,7 +22,7 @@
     {\Large Alexandre Ait Ettajer} \\
 \end{flushleft}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
-    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} & +1(281) 435-9481 & Boston, MA \\
     GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
 \end{tabular*}
 
@@ -31,7 +31,7 @@
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} Go, C++, Python, Java, Rust, TypeScript, JavaScript, MATLAB
+    \item \textbf{Languages:} Go, Python, C++, Java, Rust, TypeScript, JavaScript, MATLAB
     \item \textbf{Systems/Tools:} gRPC, HTTP/JSON, AWS, GCP, MySQL, Docker, Jenkins, GitHub Actions, Git, Perforce, MPI
 \end{description}
 
@@ -44,17 +44,18 @@
 {\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
 \begin{itemize}[leftmargin=*]
     \item Led a cross-team working group on distributed visualization architecture; drove the decision to let non-MATLAB processes update graphics clients and supply data (one server\slash many clients to many-to-many), enabling headless rendering
-    \item Built the stateless REST service that delivers the headless JavaScript renderer to web pages, one request per web instance, with logging and health checks; Jenkins deploys a new bundle each release, and my team fixes deployment breaks
-    \item Co-designed the JSON wire format and C++ serialization rules for MATLAB's graphics object tree: ordered, idempotent async updates to JavaScript clients and property-change POST requests back to the server, with compression for repeated data in vector payloads. Used by the Rendering, Charting, and Interactions teams
+    \item Built the stateless Go REST service that delivers the headless JavaScript renderer to web pages, one request per web instance, with logging and health checks; Jenkins deploys a new bundle each release, and my team fixes deployment breaks
+    \item Wrote Go tools for testing and deploying our code
+    \item Co-designed the JSON wire format and C++ serialization for MATLAB's graphics object tree: ordered, idempotent async updates to JavaScript clients and POST requests to the server. Used by the Rendering, Charting and Interactions teams
     \item Moved axes rendering from server-side C++ to client JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally, 50\% faster online
     \item Shipped a multithreaded C++ pipeline for $M \times 3$ point data (four fused stages, SIMD across points, worker threads claiming blocks through an atomic counter) that runs off MATLAB's compute thread; stress-tested for race conditions
     \item Twice fast-tracked fixes for monorepo integration breaks that blocked every engineer company-wide; added unit and system tests so developer sandboxes catch that class of dependency failure before integration
-    \item Rewrote axis tick selection in C++23, used by every MATLAB Axes: 500 $\to$ 190\,ns linear and 640 $\to$ 310\,ns log; verified degenerate inputs, determinism across compilers and CPUs, and old-vs-new behavior on a large corpus
     \item Mentored 3 engineers who shipped table support and animation features; one was later hired onto my team
 \end{itemize}
 
 {\large \textbf{Senior Associate Software Engineer}} \textit{(promoted)} \hfill \textit{April 2024 -- April 2025}
 \begin{itemize}[leftmargin=*]
+    \item Designed and prototyped MATLAB's first hierarchical chart (Sunburst), which shipped; led UX and design reviews
     \item Fixed FIG-file save/load compatibility across 2014--2025 releases (order-dependent property restores); designed save/load so older releases load newer files intact and newer ones handle added or removed properties
 \end{itemize}
 

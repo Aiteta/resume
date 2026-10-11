@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{lmodern}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushleft}
+    {\Large Alexandre Ait Ettajer} \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} \quad +1(281) 435-9481 \quad Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} \quad LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{flushleft}
+
+\vspace{1em}
+
+Dear Content Platform hiring team,
+
+% Draft modeled on your Ads letter. A "% NEW" line follows any sentence in my wording; the rest is from your Ads letter or the old version of this letter.
+I'm applying for the Software Engineer role on the Content Platform team. I've been a software engineer at MathWorks for over four years and finished my M.S. in Computer Science at UT Austin in December 2025 while working full-time; my concentration was on distributed and parallel systems with electives in operating systems and machine learning.
+I want to build infrastructure other teams depend on and help run it in production, which is what your team does for feeds, posts, comments and votes.
+
+This is the direction my career at MathWorks has taken.
+% NEW
+Initially, most of my work dealt with enhancing current graphics tooling in base MATLAB using MATLAB code.
+With the need to move our company towards a cloud native architecture, I learned about client-server models and co-designed the wire format between MATLAB's C++ graphics server and JavaScript clients, which the Rendering, Charting and Interactions teams now build on.
+% NEW: "which the Rendering, Charting and Interactions teams now build on" is added to your sentence.
+Utilizing our new JS renderer, I led a cross-team working group to deploy a stateless Go REST service that delivers our renderer to web pages to allow for visualization and interaction with MATLAB charts without a MATLAB backend.
+I've also written Go tools for testing and deploying our code.
+On the client side, I moved axes rendering off the server, which made interactions 25\% faster locally and 50\% faster on MATLAB Online.
+% NEW: "On the client side" and "off the server" are mine; the numbers are from the old version.
+
+Your team also runs R2, Reddit's legacy monolith in the critical path of nearly every user journey, and I'm used to old code that has to keep working.
+% NEW: the R2 half is mine.
+I believe that it is paramount to deeply understand the code you deploy and have reworked the MATLAB chart axis tick picker, which is part of our legacy monolithic code base from the 1990s, to improve readability and provide a 52--62\% reduction in execution time.
+I also fixed FIG-file save and load for files going back to 2014, and twice fast-tracked fixes for monorepo breaks that blocked every engineer working in it.
+
+I'm excited to work with Cassandra, Kubernetes, Kafka and the other tools Reddit runs at scale, and to turn the theory and projects from my degree, including a Multi-Paxos file system in Go, into production systems.
+% NEW: adapted from your Ads closing. This posting doesn't list Kafka, so it's framed as Reddit-wide.
+I learn best by building and owning real systems, on-call included, and I'm committed to growing that way on your team.
+% NEW: "on-call included" is from the old version; the posting mentions sharing on-call.
+
+Best, \\
+Alexandre Ait Ettajer
+
+\end{document}

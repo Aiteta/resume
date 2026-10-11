@@ -26,16 +26,19 @@ $(PDF_DIR):
 	mkdir -p $(PDF_DIR) $(PDF_DIR)/variants $(PDF_DIR)/cover-letters
 
 $(PDF_DIR)/$(MAIN_PDF).pdf: $(MAIN_SRC).tex | $(BUILD_DIR) $(PDF_DIR)
-	latexmk -pdf -output-directory=$(BUILD_DIR) $(MAIN_SRC).tex
+	latexmk -pdf -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR) $(MAIN_SRC).tex
 	mv $(BUILD_DIR)/$(MAIN_SRC).pdf $(PDF_DIR)/$(MAIN_PDF).pdf
+	mv $(BUILD_DIR)/$(MAIN_SRC).synctex.gz $(PDF_DIR)/$(MAIN_PDF).synctex.gz
+	ln -sf $(MAIN_PDF).pdf $(PDF_DIR)/$(MAIN_SRC).pdf
+	ln -sf $(MAIN_PDF).synctex.gz $(PDF_DIR)/$(MAIN_SRC).synctex.gz
 
 $(VARIANT_PDFS): $(PDF_DIR)/variants/%.pdf: variants/%.tex | $(BUILD_DIR) $(PDF_DIR)
-	latexmk -pdf -output-directory=$(BUILD_DIR) $<
-	mv $(BUILD_DIR)/$*.pdf $(@D)/
+	latexmk -pdf -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR) $<
+	mv $(BUILD_DIR)/$*.pdf $(BUILD_DIR)/$*.synctex.gz $(@D)/
 
 $(COVER_PDFS): $(PDF_DIR)/cover-letters/%.pdf: cover-letters/%.tex | $(BUILD_DIR) $(PDF_DIR)
-	latexmk -pdf -output-directory=$(BUILD_DIR) $<
-	mv $(BUILD_DIR)/$*.pdf $(@D)/
+	latexmk -pdf -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR) $<
+	mv $(BUILD_DIR)/$*.pdf $(BUILD_DIR)/$*.synctex.gz $(@D)/
 
 clean:
 	latexmk -C -output-directory=$(BUILD_DIR)

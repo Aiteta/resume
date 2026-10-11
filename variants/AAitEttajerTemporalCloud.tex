@@ -22,7 +22,7 @@
     {\Large Alexandre Ait Ettajer} \\
 \end{flushleft}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
-    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} & +1(281) 435-9481 & Boston, MA \\
     GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
 \end{tabular*}
 
@@ -44,7 +44,7 @@
 {\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
 \begin{itemize}[leftmargin=*]
     \item Co-designed the JSON message format and C++ conversion rules for MATLAB's graphics client-server protocol (ordered, idempotent async updates to clients; property-change POST requests back), added payload compression to cut transfer time, and unit-tested serialization with mocked payloads. Used by the Rendering, Charting, and Interactions teams
-    \item Built and deployed a headless rendering HTTP microservice that turns a graphics JSON file into an HTML canvas
+    \item Built the stateless Go REST service that delivers our JavaScript renderer to web pages (logging, health checks) and Go tools for testing and deploying our code; Jenkins deploys each release, and my team fixes deployment breaks
     \item Drove the cross-team decision to let processes other than MATLAB update graphics clients and supply data (one server\slash many clients toward many-to-many), enabling headless rendering and renderer instances isolated from MATLAB
     \item Moved axes rendering primitives from server-side C++ to client JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally and 50\% faster on MATLAB Online, with the server still the source of truth (verified by golden tests and QE)
     \item Traced async client interactions that silently never reached the server, typically NaNs failing without errors

@@ -5,6 +5,10 @@
 % quick: backend, distributed, concurrency, perf, testing, compat,
 % debugging, graphics, web, leadership, docs, build, hpc, cloud.
 % TODO comments mark numbers or details that would make a line stronger.
+% Known gaps (Oct 10, 2026): no on-call or production incidents, and nothing
+% run in production on AWS/GCP beyond the N-Body runs. Java: has written it,
+% but C++ is the main object-oriented language. Go: used at work for the team's
+% REST APIs and for test and deploy tooling, plus coursework.
 % =====================================================================
 \documentclass{article}
 \usepackage[margin=0.5in]{geometry}
@@ -30,7 +34,7 @@
     {\Large Alexandre Ait Ettajer} \\
 \end{flushleft}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c r }
-    \href{mailto:alexandre.aitettajer@gmail.com}{alexandre.aitettajer@gmail.com} & +1(281) 435-9481 & Boston, MA \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} & +1(281) 435-9481 & Boston, MA \\
     GitHub: \href{https://github.com/aiteta}{Aiteta} & & LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
 \end{tabular*}
 
@@ -39,7 +43,7 @@
 %-----------------------------
 \section*{SKILLS}
 \begin{description}
-    \item \textbf{Languages:} C++, Go, Rust, Python, TypeScript, JavaScript, MATLAB
+    \item \textbf{Languages:} C++, Go, Rust, Python, Java, TypeScript, JavaScript, MATLAB
     \item \textbf{Frameworks/Protocols:} gRPC, HTTP, MPI, CUDA, Node.js, LAPACK
     \item \textbf{Tools/Platforms:} AWS, GCP, Docker, MySQL, Jenkins, GitHub Actions, Git, Perforce
 \end{description}
@@ -52,14 +56,16 @@
 
 {\large \textbf{Software Engineer}} \textit{(promoted)} \hfill \textit{April 2025 -- Present}
 \begin{itemize}[leftmargin=*]
-    \item Co-designed the JSON message format and C++ conversion rules that serialize MATLAB's graphics object tree (MCOS objects) for the graphics client-server protocol: ordered, idempotent async updates to JavaScript clients over IPC, and property-change POST requests back to the server. Added compression for large array payloads to cut transfer time, and unit-tested serialization with mocked payloads. Used by the Rendering, Charting, and Interactions teams % backend, distributed, testing
-    % TODO: how much did compression cut payload size or transfer time?
+    \item Co-designed the JSON message format and C++ conversion rules that serialize MATLAB's graphics object tree (MCOS objects) for the graphics client-server protocol: ordered, idempotent async updates to JavaScript clients over IPC, and property-change POST requests back to the server. Added compression of repeated data in vector-object payloads (off-the-shelf algorithm) to cut transfer time, and unit-tested serialization with mocked payloads. Used by the Rendering, Charting, and Interactions teams % backend, distributed, testing
+    % TODO: no measurement of the compression yet; add one if you can get it
     \item Led a cross-team working group on distributed visualization architecture and drove the decision to let processes other than MATLAB update graphics clients and supply data (one server\slash many clients toward many-to-many). This enabled headless rendering, cut back-and-forth between the renderer and MATLAB, and let users interact with renderer instances without affecting their MATLAB process % distributed, leadership
-    \item Built the headless rendering HTTP microservice: it runs the JavaScript renderer with no MATLAB process, takes a graphics JSON file, and returns a rendered HTML canvas; deployed to production through Jenkins % backend, cloud, web
-    % TODO: who calls it, and does it have auth, logging, or metrics?
+    \item Built the stateless Go REST service that delivers the headless JavaScript renderer to web pages, called once per web instance, with logging and health checks; Jenkins deploys a new bundle automatically with each MATLAB release, and my team fixes it when deployment-system changes break it % backend, cloud, web, ops
+    % TODO: is caching the bundle across a user's tabs in place, or planned? Confirm the renderer runs in the browser (graphics JSON in, HTML canvas out)
+    \item Wrote Go tools for testing and deploying our code % build, testing, cloud
+    % TODO: what the tools do and who uses them
     \item Moved axes rendering primitives (rulers, grid, backdrop, labels, title, data-space transforms, ConstantLine/ConstantPlane) from server-side C++ to client-side JavaScript, replacing per-frame dirty/acknowledge round trips (60/s on MATLAB Online) with one call per completed interaction: interactions 25\% faster locally and 50\% faster on MATLAB Online. The server remains the source of truth; verified with golden tests and QE % perf, distributed, testing, graphics
     \item Shipped a multithreaded C++ pipeline for $M \times 3$ point data: four fused stages, SIMD vectorization across points, and worker threads claiming blocks through an atomic counter, dispatched off the MATLAB compute thread so it doesn't block computation; stress-tested for race conditions % concurrency, perf
-    % TODO: speedup, and on what input sizes?
+    % TODO: speedup, and on what input sizes? (not known as of Oct 10; benchmark it if you can)
     \item Led the Axes/Tick source restructuring and rewrote axis tick selection in C++23 (used by every MATLAB Axes): 500 $\to$ 190\,ns for linear and 640 $\to$ 310\,ns for log ticks, balancing optimized math with readable code. Structured as validate $\to$ route $\to$ pick with errors reported through \texttt{std::expected}; tested degenerate inputs and determinism across compilers and CPUs, and diffed behavior against the old algorithm on a large corpus % perf, testing, graphics
     % TODO: once it ships, add the release
     \item Twice fast-tracked fixes for company-wide breaks at monorepo integration, caused by component dependencies, that blocked every engineer on the monorepo; added unit and system tests so developer sandboxes catch that class of failure before integration % debugging, testing, build
@@ -107,7 +113,7 @@ Browser-based roguelike with procedural generation, built in a 7-day game jam; s
 \section*{EDUCATION}
 \textbf{M.S. in Computer Science} \hfill The University of Texas at Austin — December 2025 \\
 \textit{Full-time course load while working full-time} — Distributed Systems, Parallel Systems, Advanced Operating Systems \\
-Course projects: Multi-Paxos file system, MapReduce, and OS components: scheduler, threads, file system, and virtualization (partitioning RAM, address spaces, and the file system)
+Course projects: Multi-Paxos file system; MapReduce in Parallel Systems, scaling workers with data size to turn a linear algorithm into a logarithmic one; and in Advanced OS a scheduler, threads, a file system with crash recovery, and virtualization (partitioning RAM, address spaces, and the file system)
 % GPA 3.56 if an application asks for it. Cum Laude isn't on the diploma, so leave it off.
 
 \textbf{B.S. in Computer Science} \& \textbf{B.S. in Aeronautical Engineering} \hfill Rensselaer Polytechnic Institute — May 2022 \\

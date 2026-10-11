@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{lmodern}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushleft}
+    {\Large Alexandre Ait Ettajer} \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} \quad +1(281) 435-9481 \quad Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} \quad LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{flushleft}
+
+\vspace{1em}
+
+Dear Consumer Engineering hiring team,
+
+% Draft modeled on your Ads letter. A "% NEW" line follows any sentence in my wording; the rest is from your Ads letter or the old version of this letter.
+I'm applying for the Software Engineer role in Consumer Engineering. I've been a software engineer at MathWorks for over four years and finished my M.S. in Computer Science at UT Austin in December 2025 while working full-time; my concentration was on distributed and parallel systems with electives in operating systems and machine learning.
+
+Your posting asks for engineers who care about why a feature is built and its impact on the end user, and I've spent my time at MathWorks building features users touch directly.
+% NEW
+Initially, most of my work dealt with enhancing current graphics tooling in base MATLAB using MATLAB code.
+With the need to move our company towards a cloud native architecture, I learned about client-server models and co-designed the wire format between MATLAB's C++ graphics server and JavaScript clients.
+Utilizing our new JS renderer, I led a cross-team working group to deploy a stateless Go REST service that delivers our renderer to web pages to allow for visualization and interaction with MATLAB charts without a MATLAB backend.
+I also moved axes rendering from server-side C++ to the client, replacing per-frame round trips with one call per completed interaction, which made interactions 25\% faster locally and 50\% faster on MATLAB Online.
+
+Most of my career has been in service of creating deeply interactive data visualizations and the systems behind them, which fits with the focus on usability and interaction design in your posting.
+% NEW: the end of this sentence is mine; the start is from your Ads letter.
+As an example, I designed MATLAB's first hierarchical chart, the Sunburst, with drill-down interactions.
+To do so, I had to rework the architecture that defined the relationship between MATLAB graphics objects and interaction events while maintaining existing behavior.
+I also led its UX and design reviews, and it shipped.
+% NEW: "the Sunburst" and this last sentence come from the old version, reworded to follow yours.
+
+I'm excited to work with Redis, Cassandra, Kafka and the other tools Reddit runs at scale, and to turn the theory and projects from my degree, including a Multi-Paxos file system in Go, into products people use every day.
+% NEW: adapted from your Ads closing. This posting doesn't list Kafka, so it's framed as Reddit-wide.
+I also want to get good at experiment-driven product work alongside PMs, designers and data scientists.
+I learn best by building and owning real systems, and I'm committed to growing that way on your team.
+
+Best, \\
+Alexandre Ait Ettajer
+
+\end{document}

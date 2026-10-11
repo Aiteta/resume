@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{lmodern}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushleft}
+    {\Large Alexandre Ait Ettajer} \\
+    \href{mailto:aaitetta@gmail.com}{aaitetta@gmail.com} \quad +1(281) 435-9481 \quad Boston, MA \\
+    GitHub: \href{https://github.com/aiteta}{Aiteta} \quad LinkedIn: \href{https://www.linkedin.com/in/alexandre-ait-ettajer-65740b170/}{alexandre-ait-ettajer} \\
+\end{flushleft}
+
+\vspace{1em}
+
+Dear Ingestion Platform hiring team,
+
+% Draft modeled on your Ads letter. A "% NEW" line follows any sentence in my wording; the rest is from your Ads letter or the old version of this letter.
+I'm applying for the Software Engineer role on the Ingestion Platform team. I've been a software engineer at MathWorks for over four years and finished my M.S. in Computer Science at UT Austin in December 2025 while working full-time; my concentration was on distributed and parallel systems with electives in operating systems and machine learning.
+Moving more than 100 billion events a day from Kafka into BigQuery, and next into S3, GCS and Iceberg, is the kind of problem I want to spend my time on.
+
+The closest thing I've done is moving data between systems without losing its meaning.
+With the need to move our company towards a cloud native architecture, I learned about client-server models and co-designed the wire format between MATLAB's C++ graphics server and JavaScript clients: ordered, idempotent async updates, with compression for repeated data in vector payloads.
+% NEW: your sentence plus the wire format details from the old version.
+Three teams build on it.
+I also fixed FIG-file save and load for files going back to 2014, so older releases read newer files and newer releases handle added or removed properties.
+It's schema evolution under another name.
+Utilizing our new JS renderer, I led a cross-team working group to deploy a stateless Go REST service that delivers our renderer to web pages to allow for visualization and interaction with MATLAB charts without a MATLAB backend.
+The service has logging and health checks, and I've also written Go tools for testing and deploying our code.
+% NEW: logging and health checks are from the old version; the posting asks for observability and alerting.
+% TODO (optional): the posting also mentions leading migrations off legacy ingestion systems. If you want the tick picker here, after the FIG-file sentences:
+%   I also reworked the MATLAB chart axis tick picker, which is part of our legacy monolithic code base from the 1990s, to improve readability and provide a 52--62\% reduction in execution time, and checked the new version against the old one on a large corpus of inputs.
+
+I'm excited to work with Kafka, Flink, Iceberg and the rest of your stack, and to turn the theory and projects from my degree, including a Multi-Paxos file system in Go and a MapReduce implementation, into a platform that teams across Reddit rely on every day.
+I haven't run these tools in production yet, but I learn best by building and owning real systems, and I'm committed to growing that way on your team.
+% NEW: adapted from your Ads closing, keeping "I haven't run these tools in production yet" from the old version.
+
+Best, \\
+Alexandre Ait Ettajer
+
+\end{document}
